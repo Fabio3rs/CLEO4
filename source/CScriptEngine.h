@@ -29,6 +29,14 @@ namespace CLEO
         std::vector<BYTE> script_texts;
 
     public:
+        inline RwTexture* GetScriptTextureById(int id)
+        {
+            if (script_textures.size() > id)
+                return script_textures[id];
+
+            return nullptr;
+        }
+
         inline SCRIPT_VAR * GetVarsPtr() { return LocalVar; }
         inline WORD GetScmFunction() { return MemRead<WORD>(reinterpret_cast<BYTE*>(this) + 0xDD); }
         inline void SetScmFunction(WORD id) { MemWrite<WORD>(reinterpret_cast<BYTE*>(this) + 0xDD, id); }

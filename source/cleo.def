@@ -21,3 +21,4 @@ EXPORTS
 	staticThreads							@18
 	_CLEO_GetPointerToScriptVariable@4		@19
 	_CLEO_ReadStringPointerOpcodeParam@12	@20
+	_CLEO_GetScriptTextureById@8			@21

@@ -2545,6 +2545,7 @@ extern "C"
     void WINAPI CLEO_RetrieveOpcodeParams(CRunningScript *thread, int count);
     void WINAPI CLEO_RecordOpcodeParams(CRunningScript *thread, int count);
     SCRIPT_VAR * WINAPI CLEO_GetPointerToScriptVariable(CRunningScript* thread);
+    RwTexture * WINAPI CLEO_GetScriptTextureById(CRunningScript* thread, int id);
 
 #ifdef _MSC_VER
 #pragma warning(push)
@@ -2693,5 +2694,15 @@ extern "C"
     SCRIPT_VAR * WINAPI CLEO_GetPointerToScriptVariable(CRunningScript* thread)
     {
         return GetScriptParamPointer(thread);
+    }
+
+    RwTexture * WINAPI CLEO_GetScriptTextureById(CRunningScript* thread, int id)
+    {
+        CCustomScript* cleoscript = reinterpret_cast<CCustomScript*>(thread);
+
+        if (cleoscript != nullptr)
+            return cleoscript->GetScriptTextureById(id);
+
+        return nullptr;
     }
 }
